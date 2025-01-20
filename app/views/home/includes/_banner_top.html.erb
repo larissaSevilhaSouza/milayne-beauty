@@ -1,0 +1,13 @@
+<% banners_header = banners_ads(1110, 90, 1, 1) %>
+
+<% if banners_header.present? %>
+  <div class="row mx-0 mt-1 justify-content-center">
+    <% banners_header.each do |banner| %>
+      <div class="col-12">
+        <div class="row justify-content-center banner-adjust">
+          <%= show_banner_ad(banner, 1110, 90) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<div data-controller="dialog" data-action="click->dialog#backdropClose">
+  <dialog data-dialog-target="dialog" class="">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+      <div class="px-6 py-4 flex justify-end">
+        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" type="button" data-action="dialog#close" autofocus>
+          Fechar
+        </button>
+      </div>
+      <div class="px-6 py-4">
+        <h2 class="text-lg font-bold mb-2"><%= title_card || "" %></h2>
+        <p class="text-gray-600"><%= description_card || "" %></p>
+      </div>
+      <div class="px-6 py-4 flex justify-center w-full">
+        <a href="<%= achive_modal || "" %>" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full text-center" target="_blank" download>
+          Baixar <%= name_file || "" %>
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <button type="button" data-action="dialog#open">Baixar Arquivo</button>
+
+
+</div>
+
+<%#= render "hero/modal", title_card: "", description_card: "", name_file: "", achive_modal: "" %>

@@ -1,0 +1,9 @@
+class CreateFontSecondaries < ActiveRecord::Migration[7.0]
+  def change
+    create_table :font_secondaries do |t|
+      t.references :category_font, null: false, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,302 @@
+<div class="hidden lg:block w-100 bg-[<%= site_colors.sencondary %>] py-2">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between ">
+      <div class="flex gap-[5%]">
+        <div class="flex items-center" style="font-family: <%= FontPrimary.first&.category_font&.title %>;">
+          <p class="text-zinc-600 poppins-regular text-[14px] w-max inline-block">
+            Acessibilidade:
+          </p>
+          <div class="inline-block -ml-3">
+            <%= render "shared/accessibility" %>
+          </div>
+        </div>
+
+      </div>
+      <!-- add link top aqui-->
+      <div class="flex gap-[5%]">
+        <% if @link_top.present? %>
+          <% @link_top.each do |top| %>
+            <%= link_to top.link, target: (top.new_page ? "_blank" : "_self"), class:"flex items-center group" do %>
+              <div class="h-[20px] w-[20px] pr-1 flex items-center">
+                <% if top.icon_url.present? %>
+                  <%= image_tag top.icon_url %>
+                <% end %>
+              </div>
+              <span class="text-zinc-600 poppins-regular text-[14px] w-max transition duration-300 font-weight group-hover:font-bold">
+
+                <%= content_tag :span, top.name, style: "font-family: #{FontPrimary.first.category_font.title};" %>
+              </span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bg-white border-b w-100">
+  <nav class="container py-4 mx-auto">
+    <div class="py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <%= link_to root_path do %>
+            <% site_color = SiteColor.first %>
+            <% if site_color %>
+              <%= image_tag url_for(site_color.logo_header.url), alt: "aimagem", class: "hover:scale-105 transition duration-300 w-52" %>
+            <% else %>
+              <%= image_tag "logo-top.svg", alt: "aimagem", class: "hover:scale-105 transition duration-300 w-52" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% if @socials.present? %>
+          <div class="flex gap-1">
+            <% @socials.each do |social| %>
+              <% if social.facebook.present? %>
+                <div class="border border-[<%= site_colors.primary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center hover:scale-110 transition duration-300">
+                  <%= link_to social.facebook, target: "_blank" do %>
+                    <%#= image_tag "icons2/icon_face.svg", class:"text-[#{site_colors.primary}]" %>
+                    <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M3.3188 6.5403H0.5V9.8105H3.3188V19.621H8.0167V9.8105H11.4387L11.775 6.5403H8.0167V5.1775C8.0167 4.3967 8.1971 4.0877 9.0643 4.0877H11.775V0H8.1971C4.8183 0 3.3188 1.2942 3.3188 3.773V6.5403Z"
+                        fill="<%= site_colors.primary %>"
+                      />
+                    </svg>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <% if social.instagram.present? %>
+                <div class="border border-[<%= site_colors.primary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center hover:scale-110 transition duration-300">
+                  <%= link_to social.instagram, target: "_blank" do %>
+                    <%#= image_tag "icons2/icon_insta.svg" %>
+                    <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <mask id="mask0_1_172" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="23">
+                        <path d="M23.0246 0.225098H0.474609V22.7751H23.0246V0.225098Z" fill="white"/>
+                      </mask>
+                      <g mask="url(#mask0_1_172)">
+                        <path
+                          d="M15.9777 0.225098H7.5215C3.6302 0.225098 0.474609 3.38072 0.474609 7.27202V15.7282C0.474609 19.6195 3.6302 22.7751 7.5215 22.7751H15.9777C19.869 22.7751 23.0246 19.6195 23.0246 15.7282V7.27202C23.0246 3.38072 19.869 0.225098 15.9777 0.225098ZM20.9105 15.7282C20.9105 18.4483 18.6978 20.661 15.9777 20.661H7.5215C4.8014 20.661 2.5887 18.4483 2.5887 15.7282V7.27202C2.5887 4.55192 4.8014 2.33912 7.5215 2.33912H15.9777C18.6978 2.33912 20.9105 4.55192 20.9105 7.27202V15.7282Z"
+                          fill="<%= site_colors.primary %>"
+                        />
+                        <path
+                          d="M11.7498 5.86255C8.6365 5.86255 6.1123 8.38675 6.1123 11.5C6.1123 14.6133 8.6365 17.1375 11.7498 17.1375C14.8631 17.1375 17.3873 14.6133 17.3873 11.5C17.3873 8.38675 14.8631 5.86255 11.7498 5.86255ZM11.7498 15.0234C9.8077 15.0234 8.2264 13.4421 8.2264 11.5C8.2264 9.55655 9.8077 7.97665 11.7498 7.97665C13.6919 7.97665 15.2732 9.55655 15.2732 11.5C15.2732 13.4421 13.6919 15.0234 11.7498 15.0234Z"
+                          fill="<%= site_colors.primary %>"
+                        />
+                        <path
+                          d="M17.8098 6.19112C18.2247 6.19112 18.561 5.85472 18.561 5.43992C18.561 5.02502 18.2247 4.68872 17.8098 4.68872C17.3949 4.68872 17.0586 5.02502 17.0586 5.43992C17.0586 5.85472 17.3949 6.19112 17.8098 6.19112Z"
+                          fill="<%= site_colors.primary %>"
+                        />
+                      </g>
+                    </svg>
+
+                  <% end %>
+                </div>
+              <% end %>
+
+              <% if social.whatsapp.present? %>
+                <div class="border border-[<%= site_colors.primary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center hover:scale-110 transition duration-300">
+                  <% whatsapp_link = "https://wa.me/#{social.whatsapp}" %>
+                  <%= link_to whatsapp_link, target: "_blank" do %>
+                    <%#= image_tag "icons2/icon_whatsapp.svg" %>
+                    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M22.9 4.04658C21.6776 2.81182 20.2216 1.83281 18.6169 1.16665C17.0121 0.500496 15.2908 0.16053 13.5533 0.166583C6.27333 0.166583 0.34 6.09992 0.34 13.3799C0.34 15.7132 0.953334 17.9799 2.1 19.9799L0.233334 26.8333L7.23333 24.9933C9.16667 26.0466 11.34 26.6066 13.5533 26.6066C20.8333 26.6066 26.7667 20.6733 26.7667 13.3932C26.7667 9.85992 25.3933 6.53992 22.9 4.04658ZM13.5533 24.3666C11.58 24.3666 9.64667 23.8333 7.95333 22.8333L7.55333 22.5932L3.39333 23.6866L4.5 19.6333L4.23333 19.2199C3.137 17.4692 2.55485 15.4456 2.55333 13.3799C2.55333 7.32658 7.48667 2.39325 13.54 2.39325C16.4733 2.39325 19.2333 3.53992 21.3 5.61992C22.3233 6.63853 23.1343 7.85013 23.6859 9.18448C24.2375 10.5188 24.5187 11.9494 24.5133 13.3932C24.54 19.4466 19.6067 24.3666 13.5533 24.3666ZM19.58 16.1532C19.2467 15.9932 17.62 15.1933 17.3267 15.0733C17.02 14.9666 16.8067 14.9133 16.58 15.2333C16.3533 15.5666 15.7267 16.3133 15.54 16.5266C15.3533 16.7533 15.1533 16.7799 14.82 16.6066C14.4867 16.4466 13.42 16.0866 12.1667 14.9666C11.18 14.0866 10.5267 13.0066 10.3267 12.6732C10.14 12.3399 10.3 12.1666 10.4733 11.9932C10.62 11.8466 10.8067 11.6066 10.9667 11.4199C11.1267 11.2332 11.1933 11.0866 11.3 10.8732C11.4067 10.6466 11.3533 10.4599 11.2733 10.2999C11.1933 10.1399 10.5267 8.51325 10.26 7.84658C9.99333 7.20658 9.71333 7.28658 9.51333 7.27325H8.87333C8.64667 7.27325 8.3 7.35325 7.99333 7.68658C7.7 8.01992 6.84667 8.81992 6.84667 10.4466C6.84667 12.0733 8.03333 13.6466 8.19333 13.8599C8.35333 14.0866 10.5267 17.4199 13.8333 18.8466C14.62 19.1933 15.2333 19.3933 15.7133 19.5399C16.5 19.7933 17.22 19.7532 17.7933 19.6732C18.4333 19.5799 19.7533 18.8732 20.02 18.0999C20.3 17.3266 20.3 16.6733 20.2067 16.5266C20.1133 16.3799 19.9133 16.3132 19.58 16.1532Z"
+                        fill="<%= site_colors.primary %>"
+                      />
+                    </svg>
+
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%#= form_tag search_path, method: :GET, class: "hidden md:block" do %>
+        <%= form_tag "#", method: :GET, class: "hidden md:block" do %>
+          <div class="relative group">
+            <%= text_field_tag :q,
+            nil,
+            placeholder: "Pesquise aqui...",
+            class:
+              "border border-[#{site_colors.primary}] rounded-full h-[40px] transform scale-x-0 group-hover:scale-x-100 absolute inset-y-0 right-0 pl-3 transition-transform duration-300 ease-in-out w-[200px] group-hover:w-auto origin-right focus:border-green-500 focus:ring-green-500",
+            id: "search_field" %>
+            <button type="submit" class="border border-[<%= site_colors.primary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center btn btn-primary m-0">
+              <%#= image_tag "icons2/icon_lupa.svg" %>
+              <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.15309 10.4286C4.15309 8.7615 4.81534 7.1627 5.99414 5.9839C7.17294 4.8051 8.77173 4.14286 10.4388 4.14286C12.1059 4.14286 13.7047 4.8051 14.8835 5.9839C16.0623 7.1627 16.7245 8.7615 16.7245 10.4286C16.7245 12.0956 16.0623 13.6944 14.8835 14.8732C13.7047 16.052 12.1059 16.7143 10.4388 16.7143C8.77173 16.7143 7.17294 16.052 5.99414 14.8732C4.81534 13.6944 4.15309 12.0956 4.15309 10.4286ZM10.4388 1C8.95491 0.999811 7.49193 1.34987 6.16883 2.0217C4.84573 2.69353 3.69989 3.66816 2.82449 4.86634C1.94909 6.06451 1.36886 7.45238 1.13098 8.91709C0.893094 10.3818 1.00428 11.882 1.4555 13.2956C1.90672 14.7092 2.68523 15.9964 3.7277 17.0524C4.77018 18.1084 6.04719 18.9035 7.45487 19.3729C8.86256 19.8423 10.3612 19.9729 11.8288 19.7539C13.2965 19.535 14.6917 18.9727 15.9011 18.1129L20.3278 22.5396C20.6242 22.8258 21.0211 22.9842 21.4332 22.9806C21.8452 22.977 22.2393 22.8118 22.5307 22.5204C22.822 22.2291 22.9873 21.8349 22.9909 21.4229C22.9944 21.0109 22.8361 20.6139 22.5498 20.3176L18.1247 15.8924C19.1277 14.4819 19.7231 12.8224 19.8456 11.0959C19.9681 9.36943 19.613 7.64254 18.8192 6.10447C18.0254 4.5664 16.8236 3.27651 15.3454 2.37614C13.8672 1.47577 12.1696 0.999664 10.4388 1Z"
+                  fill="<%= site_colors.primary %>"
+                />
+              </svg>
+
+            </button>
+          </div>
+        <% end %>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const searchField = document.getElementById("search_field");
+            
+            searchField.addEventListener("input", function() {
+              if (this.value !== "") {
+                this.classList.remove("scale-x-0");
+                this.classList.add("scale-x-100");
+              } else {
+                this.classList.remove("scale-x-100");
+                this.classList.add("scale-x-0");
+              }
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<section class="w-full bg-[<%= site_colors.primary %>] relative">
+  <div class="container h-auto mx-auto">
+    <!-- Menu (oculto em telas menores) -->
+    <div class="items-center justify-center hidden py-2 md:flex">
+      <% Menu.order(:ordem).each do |menu| %>
+        <% if menu.active? %>
+
+          <div class="relative dropdown group ">
+            <div class="transition duration-300 hover:scale-110">
+
+              <% if menu.active_link? %>
+                <%= link_to menu.name,
+                menu.link,
+                class:
+                  "karla-semibold uppercase text-[16px] text-white px-3 py-2 rounded transition duration-300 hover:text-[#{site_colors.sencondary}] #{'text-[#{site_colors.sencondary}]' if request.path == menu.link}",
+                data: {
+                  toggle: "dropdown"
+                } %>
+              <% else %>
+                <span
+                  class="
+                    karla-semibold
+                    uppercase
+                    text-[16px]
+                    text-white
+                    px-3
+                    py-2
+                    rounded
+                    transition
+                    duration-300
+                    hover:text-[<%= site_colors.sencondary %>]
+                    <%= 'text-[#{site_colors.sencondary}]' if request.path == menu.link %>
+                  "
+                ><%= menu.name %></span>
+              <% end %>
+            </div>
+
+            <% if menu.active_link? %>
+            <% else %>
+              <% if menu.sub_menus.present? %>
+                <div class="bg-white w-4 h-4 absolute z-[-20] group-hover:z-20 top-6 left-[50%] right-[50%] rotate-45 opacity-0 group-hover:opacity-100 transition duration-300 border"></div>
+                <div
+                  class="
+                    bg-white
+                    dropdown-menu
+                    flex
+                    flex-col
+                    karla-semibold
+                    uppercase
+                    text-[16px]
+                    text-[<%= site_colors.primary %>]
+                    rounded
+                    transition
+                    duration-300
+                    absolute
+                    z-[-20]
+                    group-hover:z-20
+                    top-8
+                    opacity-0
+                    group-hover:opacity-100
+                    border
+                  "
+                >
+
+                  <% menu.sub_menus.each do |sub_menu| %>
+                    <%= link_to sub_menu.name,
+                    sub_menu.link,
+                    class: "hover:scale-110 transition duration-300 dropdown-item px-3 py-2 hover:text-[#{site_colors.terciary}] w-max",
+                    target: sub_menu.new_page? ? "_blank" : "_self" %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+    <!-- Ícone do hamburguer (visível em telas menores) -->
+    <div class="py-2 md:hidden">
+      <button id="menu-toggle" class="text-[#696969] focus:outline-none border rounded-md p-2 mr-5 sm:mr-0 bg-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 ">
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+    <!-- Menu hamburguer (visível em telas menores) -->
+    <div id="menu" class="absolute top-[58px] inset-x-0 h-auto origin-top z-50 md:hidden transition transform duration-700 ease-out scale-y-0 overflow-x-hidden">
+      <div class="py-4 bg-white border rounded shadow-md">
+        <ul>
+          <% Menu.order(:ordem).each_with_index do |menu, index| %>
+            <% if menu.active? %>
+              <li class="container mx-auto mb-2">
+                <button class="w-full px-4 py-2 text-left bg-gray-200 rounded" onclick="toggleMenu('menu-<%= index %>')">
+                  <% if menu.active_link? %>
+                    <%= link_to menu.name, menu.link %>
+                  <% else %>
+                    <%= menu.name %>
+                  <% end %>
+                </button>
+                <% if menu.sub_menus.present? %>
+                  <ul id="menu-<%= index %>" class="hidden mt-2 ml-4">
+                    <% menu.sub_menus.each do |sub_menu| %>
+                      <li class="py-1">
+                        <%= link_to sub_menu.name, sub_menu.link, class: "text-blue-500", target: (sub_menu.new_page? ? "_blank" : "_self") %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <%= form_tag search_path, method: :GET, class: "flex group py-2 w-full container mx-auto" do %>
+          <%= text_field_tag :q, nil, placeholder: "Pesquise aqui...", class: "border border-[#DDDDDD] border-r-0 rounded-full rounded-r h-[40px] w-full" %>
+          <button type="submit" class="border border-[#DDDDDD] border-l-0 bg-white rounded-full rounded-l w-[40px] h-[40px] flex items-center justify-center btn btn-primary m-0">
+            <%= image_tag "icons/icon_lupa.png" %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleMenu(menuId) {
+    const menu = document.getElementById(menuId);
+    menu.classList.toggle('hidden');
+  }
+</script>
+
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", function() {
+    var menu = document.getElementById("menu");
+    menu.classList.toggle("scale-y-100");
+  });
+</script>

@@ -1,0 +1,374 @@
+pt:
+  activerecord:
+    models:
+      site_color: "Cores e logos"
+      secretary: "Secretarias"
+      archive_secreatry: "Arquivos da secretaria"
+      category_font: "Cadastrar Categoria de Fonte"
+      font_primary: "Cadastrar fonte primária"
+      font_secondary: "Cadastrar fonte secundária"
+      separate_file: "Arquivos Separados"
+      separate_file_archive: "Arquivos Separados"
+      page: 'Páginas'
+      album:
+        one: "Álbum"
+        other: "Álbuns"
+      album_category:
+        one: "Categoria de Álbum"
+        other: "Categoria de Álbuns"
+      post: "Cadastrar Notícia"
+      post_category: "Cadastrar Categoria de Notícia"
+      user:
+        one: "Gerenciar usuário"
+        other: "Gerenciar usuários"
+      category_quick_access:  
+        one: "Cadastrar Categoria de Acesso Rápido"
+        other: "Cadastrar Categoria de Acesso Rápido"
+      
+      quick_access:
+        one: "Cadastrar Acesso Rápido"
+        other: "Cadastrar Acesso Rápido"
+      contact:
+        one: "Verificar contato"
+        other: "Verificar contatos"
+      link_top: "Links do topo"
+      banner:
+        one: "Cadastrar banner"
+        other: "Cadastrar banner"
+      site_information:
+        one: "Informação do Site"
+        other: "Informação do Site"
+      adjustment:
+        one: "Configurações do site"
+        other: "Configurações do site"
+      client:
+        one: "Cadastrar cliente"
+        other: "Cadastrar cliente"
+      permission:
+        one: "Permissão de Usuário"
+        other: "Permissão de Usuário"
+      category_service:
+        one: "Cadastrar categoria"
+        other: "Cadastrar categoria"
+      social_medium:
+        one: "Configurar rede social"
+        other: "Configurar redes sociais"
+      service:
+        one: "Cadastrar serviço"
+        other: "Cadastrar serviço"
+      product:
+        one: "Cadastrar produto"
+        other: "Cadastrar produto"
+      about:
+        one: "Cadastrar sobre nós"
+        other: "Cadastrar sobre nós"
+      blog:
+        one: "Cadastrar blog"
+        other: "Cadastrar blog"
+      category_blog:
+        one: "Cadastrar categoria"
+        other: "Cadastrar categoria"
+      portfolio:
+        one: "Cadastrar portfólio"
+        other: "Cadastrar portfólio"
+      counter:
+        one: "Cadastrar contador"
+        other: "Cadastrar contadores"
+      video:
+        one: "Cadastrar vídeo"
+        other: "Cadastrar vídeo"
+      adsense:
+        one: "Configurar script"
+        other: "Configurar script"
+      audit:
+        one: "Logs"
+        other: "Logs"
+      law_category:
+        one: "Cadastrar Categoria da Lei"
+        other: "Cadastrar Categoria da Lei"
+      bidding_category:
+        one: "Cadastrar Categoria de Licitação"
+        other: "Cadastrar Categoria de Licitação"
+      law:
+        one: "Cadastrar Lei"
+        other: "Cadastrar Lei"
+      official_diary:
+        one: "Cadastrar Diário Oficial"
+        other: "Cadastrar Diário Oficial"
+      bid_complete:
+        one: "Cadastrar Edital de Licitação"
+        other: "Cadastrar Edital de Licitação"
+      bid_notice:
+        one: "Cadastrar Aviso de Licitação"
+        other: "Cadastrar Aviso de Licitação"
+      bid_result:
+        one: "Cadastrar Resultado de Licitação"
+        other: "Cadastrar Resultado de Licitação"
+      contract:
+        one: "Cadastrar Contrato"
+        other: "Cadastrar Contrato"
+      contract_end:
+        one: "Cadastrar Fim de Contrato"
+        other: "Cadastrar Fim de Contrato"
+      archive_notice: 'arquivos de aviso de licitação'
+      archive_complete: 'arquivos de edital de licitação'
+      archive_contract: 'Arquivos de contrato'
+      archive_contract_end: 'Arquivos de fim de contrato'
+      archive_result: 'Arquivos de resultados de licitação'
+    attributes:
+      contract_end:
+        bidding_category: "Selecionar Categoria"
+        date_publish: "Data de Publicação"
+        object: "Objeto"
+        number: "Número"
+        supplier: "Fornecedor"
+        file: "Arquivo"
+        archive_contract_ends: 'Arquivos de fim de contrato'
+      contract:
+        bidding_category: "Selecionar Categoria"
+        modality: "Modalidade"
+        publish_date: "Data de publicação"
+        object: "Objeto"
+        number: "Nº Contrato" 
+        process: "Nº Processo"
+        supplier: "Fornecedor"
+        archive_contracts: 'Arquivos de contrato'
+        file: "Arquivo"
+      bid_result:
+        bidding_category: "Selecionar Categoria"
+        modality: "Modalidade"
+        date_result: "Data de Abertura"
+        number: "Nº Processo"
+        object: "Objeto"
+        winner: "Vencedor"
+        publish: "Data de Publicação"
+        file: "Arquivo"
+        archive_results: 'Arquivos de resultados de licitação'
+      site_color:
+        primary: "Cor primária"
+        sencondary: "Cor secundária"
+        terciary: "Cor terciária"
+        logo_header: "Logo do topo"
+        logo_footer: "Logo do rodapé" 
+      bid_notice:
+        bidding_category: "Selecionar Categoria"
+        modality: "Modalidade"
+        publish_date: "Data de Abertura"
+        number: "Nº Edital"
+        object: "Objeto"
+        file: "Arquivo"
+        archive_notices: 'arquivos de aviso de licitação'
+        publish: "Data de Publicação"
+      bid_complete:
+        bidding_category: "Selecionar Categoria"
+        modality: "Modalidade"
+        process: "Processo"
+        judgment: "Data do Julgamento"
+        object: "Objeto"
+        file: "Arquivo"
+        publish: "Data de Publicação"
+        archive_completes: 'arquivos de edital de licitação'
+      official_diary:
+        publish_date: "Data de Publicação"
+        number: "Nº Edição"
+        ementa: "Ementa"
+        file: "Arquivo"
+      post_category:
+        name: "Titulo da categoria"
+      post:
+        post_category: "Selecionar Categoria"
+        title: "Título"
+        summary: "Resumo"
+        cover: "Capa"
+        date_publish: "Data"
+        is_published: "Publicar?"
+        content: "Conteúdo"
+        featured: "Matéria destaque?"
+        written_by: "Escrito por"
+        source: "Fonte"
+      law:
+        law_category: "Selecionar Categoria"
+        name: "Número/ano"
+        publish_date: "Data de Publicação"
+        ementa: "Ementa"
+        file: "Arquivo"
+      bidding_category:
+        name: "Título da categoria"
+      law_category:
+        name: "Título"
+      adjustment:
+        phone: "Telefone"
+        adress: "Endereço"
+      about:
+        sumary: "Resumo"
+        text: "Texto"
+        photo: "Foto"
+      category_service:
+        title: "Título da categoria"
+      service:
+        category_service: "Selecionar categoria"
+        title: "Nome"
+        text: "Texto"
+        photo: "Foto(490X325)"
+      user:
+        name: "Nome"
+        email: "E-mail"
+        permissions: "Acesso em: "
+        password: "Senha"
+        password_confirmation: "Confirmar senha"
+      contact:
+        name: "Nome"
+        email: "E-mail"
+        phone: "Telefone"
+        subject: "Assunto"
+        message: "Mensagem"
+      banner:
+        title: "Título"
+        subtitle: "Descrição"
+        photo: "Foto"
+        format_ad: "Selecione o tipo de banner"
+      product:
+        name: "Nome"
+        description: "Texto"
+        photo: "Foto(415X300)"
+      testimony:
+        name: "Nome"
+        city: "Cidade"
+        brief: "Relato"
+        photo: "Foto(100x100)"
+      video:
+        name: "Título"
+        link: "URL"
+      client:
+        name: "Nome"
+        logo: "Foto(310X140)"
+      category_blog:
+        title: "Título da categoria"
+      blog:
+        category_blog: "Selecionar categoria"
+        title: "Titulo"
+        address: "Endereço"
+        photo: "Foto"
+        date: "Data"
+      portfolio:
+        title: "Titulo"
+        description: "Descrição"
+        photo: "Capa(400X300)"
+        photo_portifolios: "Fotos(400X300) - (Primeira foto é a capa)"
+        category_energy: "Instalação"
+      photo_portifolio:
+        photo: "Foto(400X300)"
+        cover: "Capa"
+      counter:
+        qtd_of_boards_installed: "Quantidade de placas instaladas"
+        cities_served: "Cidades atendidas"
+        collaborator: "Colaborador"
+        client: "Cliente"
+      adsense:
+        title: "Nome do script"
+        ad_type: "Onde será colocado?"
+      permission:
+        title: "Página de acesso: "
+        user: "Usuario"
+      audit:
+        user_id: "ID do usuário"
+        user: "Usuário"
+        action: "Ação"
+        created_at: "Última alteração (Brasília)"
+        audited_changes: "Alteração realizada"
+        auditable_type: "Alteração em: "
+        remote_address: "Endereço de IP"   
+      quick_access:
+        name: "Título"
+        link: "Link"
+        icon: "Icone(64px)"
+        category_quick_access: "Selecionar Categoria"
+        description: "Descrição"
+        new_page: "Abrir em nova página?"
+        views_count: "Nº de Acessos"
+      category_quick_access:
+        title: "Título"
+        icon_title: 'Icone'
+      album_category:
+        name: "Título da categoria"
+      album:
+        title: "Título"
+        date_publish: "Data da Publicação"
+        album_category: "Selecionar Categoria"
+        photos: "Fotos"
+        description: "Descrição"
+        featured: "Destaque?"
+      photo:
+        image: "Imagem"
+        cover: "Capa" 
+      link_top:
+        icon: "Icone"
+        name: "Titulo"
+        new_page: "Abrir em nova página?"
+      video:
+        date_publish: "Data de Publicação"
+        title: "Título"
+        url: "Url"
+        description: "Descrição"
+        featured: "Destaque?"
+      menu:
+        name: "Nome do Menu"
+        active_link: "Links do menu"
+        active_sub_menu: "Tem mais de um item?"
+        active: "Item ativo?"
+        sub_menus: "Itens do sub menu"
+      sub_menu:
+        name: "Nome do sub menu"
+        new_page: "Abrir em nova página?"
+      secretary: 
+        nome: "Nome da secretária"
+        photo: "Foto do secretário(380X380)"
+        summary: "Dados básicos da secretária"
+        description: "Descrição"
+        name_secretary: "Nome do secretário"
+        archive_secretaries: "Arquivos da secretária"
+        ordem: "Ordem de apresentação"
+        page_link: "Link da página"
+        ordem: "Ordem de apreentação"
+      archive_secretary: 
+        title: "Titulo"
+        archive: "Arquivo"
+      font_primary:
+        category_font: "Selecionar Fonte" 
+      font_secondary:
+        category_font: "Selecionar Fonte" 
+      category_font:
+        title: "Nome da fonte"
+      page: 
+        title: 'Título'
+        description: "Descrição"
+        photo: 'Foto (300x500px)'
+        archive_pages: "Arquivos"
+        albums: "Albuns relacionados"
+        page_link: 'Link da página'
+      archive_contract_end:
+        title: "Nome do arquivo"
+        archive: "Arquivo(pdf)"
+        summary: 'Dados básicos'
+      separate_file:
+        separate_file_archives: 'Arquivos'
+      separate_file_archive: 
+        title: 'Titulo'
+        archive: 'Arquivo'
+        page_link: "Link da página"
+      archive_contract:
+        title: "Nome do arquivo"
+        archive: "Arquivo(pdf)"
+      archive_contract_end:
+        title: "Nome do arquivo"
+        archive: "Arquivo(pdf)"
+      archive_complete:
+        title: "Nome do arquivo"
+        archive: "Arquivo(pdf)"
+      archive_result:
+        title: "Nome do arquivo"
+        archive: "Arquivo(pdf)"
+      archive_notice:
+        title: "Nome do arquivo"
+        archive: "Arquivo(pdf)"
+        

@@ -1,0 +1,18 @@
+<div class="flex flex-col-reverse md:flex-row justify-between gap-10">
+  <div class="md:w-7/12">
+    <div class="top-down-animation">
+      <div class="">
+        <h3 class="uppercase poppins-bold text-4xl text-[<%= site_colors.primary %>] <%= high_contrast? ? 'text-white' : '' %>"><%= @about.sumary %></h3>
+      </div>
+    </div>
+
+  </div>
+  <% if @about.photo.present? %>
+    <div class="md:w-5/12 right-left-animation">
+      <%= image_tag @about.photo_url, class: "rounded" %>
+    </div>
+  <% end %>
+</div>
+<div class="my-10 left-right-animation text-justify">
+  <span class="text-[<%= site_colors.terciary %>] poppins-regular text-md <%= high_contrast? ? 'text-white' : '' %>"><%= @about.text.html_safe %></span>
+</div>

@@ -1,0 +1,26 @@
+<div class="w-full px-2 pb-8 sm:px-4">
+  <div class="max-w-screen-xl m-auto">    
+    <div data-controller="carousel-thumb" class="swiper max-h-[600px]">
+      <div class="w-full h-full swiper-wrapper">
+        <% album.photos.order("created_at asc").each do |photo| %>
+          <div class="swiper-slide">
+            <%= image_tag photo.image.thumb.url %>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-primary exclude-contrast swiper-button-next"></div>
+      <div class="text-primary exclude-contrast swiper-button-prev"></div>
+      <div class="swiper-pagination exclude-contrast"></div>
+    </div>
+    <div class="swiper-thumbs  overflow-x-hidden max-h-[300px]">
+      <div class="swiper-wrapper">
+        <% album.photos.order("created_at asc").each do |photo| %>
+          <div class="h-full overflow-y-hidden bg-gray-600 swiper-slide">
+            <%= image_tag photo.image.thumb_slide.url, class: "opacity-40 cursor-pointer" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

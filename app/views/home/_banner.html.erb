@@ -1,0 +1,49 @@
+<% featured_banners = banners_ads(1200, 500, 1, 3) %>
+
+<% if featured_banners.present? %>
+  <section class="relative exclude-contrast">
+    <div data-controller="slide-banner" class="swiper group">
+      <div class="w-full h-full swiper-wrapper">
+        <% featured_banners.each do |featured_banner| %>
+          <% if featured_banner.present? && featured_banner.photo.present? %>
+            <div class="w-full h-full max-h-[500px] swiper-slide exclude-contrast">
+              <div class="w-full h-full max-h-[500px] absolute flex flex-col z-30 justify-center px-8 exclude-contrast">
+                <div class="container mx-auto flex flex-col items-center md:items-start gap-4 exclude-contrast">
+                  <h2 class="hidden sm:block text-white text-md md:text-2xl md:karla-bold uppercase banner-subtitle exclude-contrast" style="font-family: <%= FontPrimary.first.category_font.title %>;">
+                    <%= featured_banner.subtitle %>
+                  </h2>
+                  <% if featured_banner.link.present? %>
+                    <h4>
+                      <%= link_to featured_banner.link, class: "bg-[#{site_colors.primary}] px-4 md:px-8 py-2 md:py-4 w-fit text-white rounded font-semibold uppercase hover:scale-110 transition duration-300 banner-link exclude-contrast",  style:"font-family: #{FontSecondary.first.category_font.title};" do %>
+                        Saiba Mais
+                      <% end %>
+                    </h4>
+                  <% end %>
+                </div>
+              </div>
+              <div class="bg-black opacity-30 group-hover:opacity-0 w-full h-full max-h-[500px] absolute exclude-contrast transition duration-300"></div>
+              <%= image_tag featured_banner.photo_url, class: "h-full w-full max-h-[500px] object-cover exclude-contrast" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="btn-next swiper-button-next bg-[<%= site_colors.primary %>] h-[32px] rounded p-4 mt-2 mx-4 opacity-0 group-hover:opacity-80 transition duration-300 exclude-contrast"></div>
+      <div class="btn-prev swiper-button-prev bg-[<%= site_colors.primary %>] h-[32px] rounded p-4 mt-2 mx-4 opacity-0 group-hover:opacity-80 transition duration-300 exclude-contrast"></div>
+    </div>
+  </section>
+<% end %>
+
+<%# if featured_banners.present? %>
+  <%# featured_banners.each do |featured_banner| %>
+    <%# if featured_banner.present? && !featured_banner.photo.present? %>
+      <%#= video_tag featured_banner.video_url, autoplay: true, loop: true, class: "h-full w-full max-h-[500px] object-cover exclude-contrast" %>
+    <%# end %>
+  <%# end %>
+<%# end %>
+
+<style>
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 18px;
+    color: #e0e0e0;
+  }
+</style>

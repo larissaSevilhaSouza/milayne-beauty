@@ -1,0 +1,49 @@
+<section class="w-full py-8">
+  <div class="container mx-auto">
+    <% if @albums.present? %>
+      <div class="w-full flex justify-between text-[<%= site_colors.primary %>] border-b-[2px] pb-[8px] mb-8 uppercase">
+        <h2 class="text-md md:text-lg md:karla-bold uppercase">ÁLBUNS DE FOTOS</h2>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <% @albums.each do |album| %>
+          <div class="flex flex-col items-center w-full gap-4">
+            <%= link_to album_path(album.slug), class: "w-full group" do %>
+              <div class="relative overflow-hidden rounded-lg h-52">
+                <%= image_tag album.cover_photo.thumb.url, class: "w-full object-cover h-full group-hover:scale-105 transition-all ease-in-out duration-300" %>
+                <div
+                  class="
+                    absolute
+                    h-full
+                    group-hover:opacity-0
+                    z-10
+                    bottom-0
+                    left-0
+                    p-2
+                    md:p-4
+                    bg-gradient-to-t
+                    from-[<%= site_colors.primary %>]
+                    rounded
+                    w-full
+                    transition-all
+                    ease-in-out
+                    duration-300
+                  "
+                >
+                </div>
+              </div>
+              <p class="pt-2 text-lg text-gray-600 poppins-regular text-center group-hover:text-[<%= site_colors.primary %>]"><%= album.title %></p>
+              <% if album.description.present? %>
+                <p class="text-gray-700 poppins-regular text-center"><%= album.description.html_safe %></p>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="w-full max-w-screen-xl p-4 mx-auto my-4 text-gray-800 bg-gray-300 rounded-md">
+        Nenhum álbum cadastrado.
+      </div>
+    <% end %>
+    <%= paginate @albums %>
+  </div>
+</section>

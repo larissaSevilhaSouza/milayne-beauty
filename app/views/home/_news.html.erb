@@ -1,0 +1,77 @@
+<!-- filepath: /home/lari/Documentos/projetos-pessoais/milaine-beauty/app/views/home/_news.html.erb -->
+<% if @posts.present? && @featured_posts.present? %>
+  <section class="w-full py-12">
+    <div class="container mx-auto">
+      <div class="w-full flex justify-between text-[<%= site_colors.primary %>] border-b-[2px] pb-[8px] mb-8 uppercase">
+        <h2 class="text-md md:text-lg md:karla-bold uppercase">Notícias</h2>
+      </div>
+      <div class="w-full h-[345px] sm:h-[500px] flex flex-col md:flex-row gap-4 md:gap-8">
+        <!-- Slider de destaques -->
+        <div data-controller="slide-news" class="swiper w-full md:w-3/5 rounded hover:scale-105 transition duration-300 group">
+          <div class="swiper-wrapper">
+            <% @featured_posts.first(3).each do |post| %>
+              <div class="swiper-slide">
+                <%= link_to post_path(post.slug), class: "block w-full h-full" do %>
+                  <div class="w-full h-full relative rounded bg-slate-200">
+                    <%= image_tag post.cover_url, class: "w-full h-full object-cover rounded" %>
+                    <div class="absolute z-10 bottom-0 p-4 md:p-8 bg-gradient-to-t from-[<%= site_colors.primary %>] rounded w-full">
+                      <div class="text-white md:text-2xl line-clamp-3" style="font-family: <%= FontPrimary.first.category_font.title %>;"><%= post.title %></div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <!-- Paginação -->
+          <div class="swiper-pagination exclude-contrast"></div>
+          <!-- Navegação -->
+          <div class="btn-next exclude-contrast swiper-button-next bg-[<%= site_colors.primary %>] h-[32px] rounded p-4 mt-2 mx-4 opacity-0 group-hover:opacity-80 transition duration-300 exclude-contrast"></div>
+          <div class="btn-prev exclude-contrast swiper-button-prev bg-[<%= site_colors.primary %>] h-[32px] rounded p-4 mt-2 mx-4 opacity-0 group-hover:opacity-80 transition duration-300 exclude-contrast"></div>
+        </div>
+        <!-- Últimos dois posts destacados -->
+        <div class="w-full md:w-2/5 h-32 md:h-auto exclude-contrast grid grid-cols-2 md:grid-cols-1 grid-rows-1 md:grid-rows-2 gap-4 md:gap-8">
+          <% @featured_posts.last(2).each do |post| %>
+            <div class="w-full h-full relative rounded bg-slate-200">
+              <%= link_to post_path(post.slug), class: "block w-full h-full" do %>
+                <%= image_tag post.cover_url, class: "w-full h-full object-cover rounded" %>
+                <div class="absolute z-10 bottom-0 p-2 md:p-4 bg-gradient-to-t from-[<%= site_colors.primary %>] rounded w-full">
+                  <div class="text-white md:text-xl line-clamp-3" style="font-family: <%= FontPrimary.first.category_font.title %>;"><%= post.title %></div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
+<style>
+  /* Estilo para todas as bolinhas de paginação */
+  .swiper-pagination-bullet {
+    background: #E6E6E6; /* Cor das bolinhas inativas */
+    opacity: 1;
+  }
+
+  /* Estilo para a bolinha de paginação ativa */
+  .swiper-pagination-bullet-active {
+    background: <%= site_colors.terciary %>; /* Cor da bolinha ativa */
+  }
+
+  .swiper-button-next:after, .swiper-button-prev:after {
+    padding: 3px 8px;
+    color: white;
+  }
+
+  .swiper-button-next {
+    right: 8px;
+  }
+
+  .swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: auto;
+    right: 41px;
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    top: 5%;
+  }
+</style>

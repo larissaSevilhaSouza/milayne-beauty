@@ -1,0 +1,8 @@
+<%# Link to the "First" page %>
+<span class="first hover:scale-110 transition duration-300 transform">
+  <%= link_to_unless current_page.first?,
+  t("views.pagination.first").html_safe,
+  url,
+  remote: remote,
+  class: "border hover:border-none py-2 px-4 rounded text-[#{site_colors.primary}] hover:bg-[#{site_colors.primary}] hover:text-white transition duration-300" %>
+</span>

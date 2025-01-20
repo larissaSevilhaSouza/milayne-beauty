@@ -1,0 +1,22 @@
+<div class="w-full px-2 py-8 sm:px-4 min-h-[calc(100vh-411px)]">
+  <div class="max-w-screen-xl m-auto" data-controller="dropzone">
+    <h2 class="mb-6 text-lg font-medium uppercase border-b-2 border-gray-300 text-primary">ADICIONAR FOTOS
+    </h2>
+    <%= form_with(model: @photo, url: album_create_photo_path(@album), class: "dropzone mb-4", id: "media-dropzone",  local: true) do |form| %>
+      <% if @photo.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@photo.errors.count, "error") %>
+            prohibited this photo from being saved:</h2>
+
+          <ul>
+            <% @photo.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+
+    <a href="<%= request.referer %>" class="px-4 py-2 font-medium rounded-md bg-primary text-gray-50 text-md">Voltar</a>
+  </div>
+</div>

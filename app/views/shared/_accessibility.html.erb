@@ -1,0 +1,101 @@
+<div id="accessibility-controls" class="flex space-x-0 ml-4">
+  <button id="increase-font" class="text-black font-bold py-1 px-1 text-xs rounded transition duration-200 ease-in-out transform hover:scale-105">A+</button>
+  <button id="decrease-font" class="text-black font-bold py-1 px-1 text-xs rounded transition duration-200 ease-in-out transform hover:scale-105">A-</button>
+  <button id="toggle-contrast" class="text-black font-bold py-1 px-1 text-xs rounded transition duration-200 ease-in-out transform hover:scale-105">
+    <i class="fas fa-adjust"></i>
+  </button>
+  <button id="reset-settings" class="text-black font-bold py-1 px-1 text-xs rounded transition duration-200 ease-in-out transform hover:scale-105">
+    <i class="fas fa-sync-alt"></i>
+  </button>
+</div>
+
+<script>
+  var body = document.body;
+  var defaultFontSize = parseFloat(window.getComputedStyle(body).fontSize);
+  var fontSizeChange = 1;
+  var maxChanges = 10;
+  var changeCount = 0;
+
+  function setFontSize(element, change) {
+    var computedStyle = window.getComputedStyle(element);
+    var currentSize = parseFloat(computedStyle.fontSize);
+    element.style.fontSize = (currentSize + change) + 'px';
+
+    // Apply the change to all child elements
+    Array.from(element.children).forEach(function(child) {
+      setFontSize(child, change);
+    });
+  }
+
+  function resetFontSize(element) {
+    element.style.fontSize = '';
+    Array.from(element.children).forEach(function(child) {
+      resetFontSize(child);
+    });
+  }
+
+  function updateButtons() {
+    document.getElementById('increase-font').disabled = (changeCount >= maxChanges);
+    document.getElementById('decrease-font').disabled = (changeCount <= -maxChanges);
+  }
+
+  document.getElementById('increase-font').addEventListener('click', function() {
+    if (changeCount < maxChanges) {
+      setFontSize(body, fontSizeChange);
+      changeCount++;
+      updateButtons();
+    }
+  });
+
+  document.getElementById('decrease-font').addEventListener('click', function() {
+    if (changeCount > -maxChanges) {
+      setFontSize(body, -fontSizeChange);
+      changeCount--;
+      updateButtons();
+    }
+  });
+
+  document.getElementById('toggle-contrast').addEventListener('click', function() {
+    body.classList.toggle('high-contrast');
+  });
+
+  document.getElementById('reset-settings').addEventListener('click', function() {
+    resetFontSize(body);
+    body.classList.remove('high-contrast');
+    changeCount = 0;
+    updateButtons();
+  });
+
+  // Initialize button state
+  updateButtons();
+</script>
+
+<style>
+  .high-contrast {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .high-contrast h3,
+  .high-contrast .text-zinc-600 {
+    color: white;
+  }
+
+  #accessibility-controls button {
+    background: none;
+  }
+
+  .high-contrast #accessibility-controls button {
+    color: white;
+    background-color: transparent;
+  }
+
+  .high-contrast *:not(img):not(.exclude-contrast):not(.ui_w):not(.uiiw):not(.usr):not(.uppercase):not(.-ml-3):not(.absolute):not(.text-white):not(.transition):not(.transition-all):not(.top-down-animation) {
+    background-color: #000 !important;
+    color: #fff !important;
+  }
+
+  #accessibility-controls {
+    display: flex;
+  }
+</style>

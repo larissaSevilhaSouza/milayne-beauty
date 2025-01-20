@@ -1,0 +1,25 @@
+<% if @about.present? %>
+  <section class="w-full hidden md:block bg-white" data-controller="scroll-active" data-scroll-active-target="section">
+    <div class="container mx-auto py-20">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+        <% if @about.photo.present? %>
+          <div class="md:w-5/12 right-left-animation">
+            <%= image_tag @about.photo_url, class: "w-full h-auto", style: "box-shadow: 2px 18px 18px #0E345E; border-radius: 20px;" %>
+          </div>
+        <% end %>
+        <div class="md:w-7/12">
+          <div class="mb-5 top-down-animation">
+            <div class="">
+              <h3 class="uppercase poppins-bold text-4xl text-zinc-600"><%= @about.sumary %></h3>
+            </div>
+          </div>
+          <div class="">
+            <div class="mb-10 left-right-animation">
+              <span class="text-zinc-600 poppins-regular text-sm"><%= @about.text.html_safe %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

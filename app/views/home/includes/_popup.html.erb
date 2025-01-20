@@ -1,0 +1,14 @@
+<% popup = banners_ads(600, 750, 4, 1, true).first %>
+
+<% if popup.present? %>
+  <div id="popup1" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="container mx-auto">
+      <div class="bg-white p-6 rounded-lg shadow-lg relative">
+        <div class="absolute top-0 right-0 p-2 cursor-pointer text-xl" onclick="document.getElementById('popup1').style.display='none'">X</div>
+        <div>
+          <%= show_banner_ad(popup, 250, 120, "block", "w-full") %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

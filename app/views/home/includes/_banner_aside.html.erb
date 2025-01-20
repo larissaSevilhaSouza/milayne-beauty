@@ -1,0 +1,9 @@
+<% banners_aside = banners_ads(365, 304, 3, 1).to_a %>
+
+<% banners_aside.each do |banner| %>
+  <div class="col-12 mt-4">
+    <div class="row banner-adjust">
+      <%= show_banner_ad(banner, 365, 304) %>
+    </div>
+  </div>
+<% end %>

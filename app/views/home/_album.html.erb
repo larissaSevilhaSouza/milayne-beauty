@@ -1,0 +1,32 @@
+<% if @albuns.present? %>
+  <section class="w-full">
+    <div class="container mx-auto">
+      <% @albuns.group_by { |album| album.album_category.name }.each do |category, albums| %>
+        <div class="w-full mt-8">
+          <div class="w-full flex justify-between items-center text-[<%= site_colors.primary %>] border-b-[2px] pb-[8px] mb-8 uppercase">
+            <h2 class="text-md md:text-lg md:karla-bold uppercase"><%= category %></h2>
+            <h5 class="text-md md:text-lg md:karla-bold">
+              <%= link_to "Ver mais", category_path(category: category) %>
+            </h5>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <% albums.each do |album| %>
+              <div class="w-full h-40 relative rounded bg-slate-200 ">
+                <%= link_to album_path(slug: album.slug), class: "block w-full h-full hover:scale-105 transition-all ease-in-out duration-300" do %>
+                  <% if album.photos.any? %>
+                    <%= image_tag album.photos.first.image_url, class: "w-full h-full object-cover rounded" %>
+                  <% else %>
+                    <%= image_tag "default_image.png", class: "w-full h-full object-cover rounded" %>
+                  <% end %>
+                  <div class="absolute z-10 bottom-0 p-2 md:p-4 bg-gradient-to-t from-[<%= site_colors.primary %>] rounded w-full">
+                    <div class="text-white md:text-xl poppins-medium line-clamp-3"><%#= album.title %></div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,137 @@
+<footer class="relative w-full bg-[<%= site_colors.sencondary %>]">
+  <section class=" w-full py-6">
+    <div class="container mx-auto">
+      <div class="flex flex-col lg:flex-row justify-between h-full">
+        <div class="flex items-center justify-center">
+          <% site_color = SiteColor.first %>
+          <% if site_color %>
+            <%= image_tag url_for(site_color.logo_footer.url), class: "w-52" %>
+          <% else %>
+            <%= image_tag "logo-top.svg", class: "w-52" %>
+          <% end %>
+        </div>
+
+        <div class="h-full my-auto py-6 flex items-center">
+          <div class="border w-full lg:h-16 border-[<%= site_colors.terciary %>] bg-[<%= site_colors.terciary %>]"></div>
+        </div>
+
+        <div class="flex flex-col items-center justify-center lg:justify-start">
+          <h3 class="text-2xl poppins-bold text-[<%= site_colors.primary %>] pb-6 ">Informações</h3>
+          <div class="text-left text-[<%= site_colors.primary %>] text-base poppins-regular">
+            <% if @config&.adress.present? %>
+              <div class="flex py-2 border-b border-[<%= site_colors.terciary %>]">
+                <p class="w-24">Endereço:
+                </p>
+                <p class=""><%= @config.adress %></p>
+              </div>
+            <% end %>
+
+            <% if @config&.phone.present? %>
+              <div class="flex py-2 border-b border-[<%= site_colors.terciary %>]">
+                <p class="w-24">Telefone:
+                </p>
+                <p class=""><%= @config.phone %></p>
+              </div>
+            <% end %>
+            <% if @config&.phone.present? %>
+              <div class="flex py-2">
+                <p class="w-24">Email:
+                </p>
+                <p class="text-[<%= site_colors.primary %>]"><%= @config.email %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="h-full my-auto py-6 flex items-center">
+          <div class="border w-full lg:h-16 border-[<%= site_colors.terciary %>] bg-[<%= site_colors.terciary %>]"></div>
+        </div>
+
+        <% if @socials.present? %>
+          <div class="flex flex-col items-center justify-center lg:justify-start">
+            <h3 class="text-2xl rubik-bold text-[<%= site_colors.primary %>] pb-6 ">Redes Sociais</h3>
+            <div class="flex gap-2">
+              <% @socials.each do |social| %>
+                <% if social.facebook.present? %>
+                  <a href="<%= social.facebook %>" target="_blank">
+                    <div class="border-2 border-[<%= site_colors.terciary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center hover:scale-110 transition duration-300">
+                      <%#= image_tag "icons2/icon_face.svg" %>
+                      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.3188 6.5403H0.5V9.8105H3.3188V19.621H8.0167V9.8105H11.4387L11.775 6.5403H8.0167V5.1775C8.0167 4.3967 8.1971 4.0877 9.0643 4.0877H11.775V0H8.1971C4.8183 0 3.3188 1.2942 3.3188 3.773V6.5403Z"
+                          fill="<%= site_colors.primary %>"
+                        />
+                      </svg>
+                    </div>
+                  </a>
+                <% end %>
+
+                <% if social.instagram.present? %>
+                  <a href="<%= social.instagram %>" target="_blank">
+                    <div class="border-2 border-[<%= site_colors.terciary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center hover:scale-110 transition duration-300">
+                      <%#= image_tag "icons2/icon_insta.svg" %>
+                      <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_1_172" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="23">
+                          <path d="M23.0246 0.225098H0.474609V22.7751H23.0246V0.225098Z" fill="white"/>
+                        </mask>
+                        <g mask="url(#mask0_1_172)">
+                          <path
+                            d="M15.9777 0.225098H7.5215C3.6302 0.225098 0.474609 3.38072 0.474609 7.27202V15.7282C0.474609 19.6195 3.6302 22.7751 7.5215 22.7751H15.9777C19.869 22.7751 23.0246 19.6195 23.0246 15.7282V7.27202C23.0246 3.38072 19.869 0.225098 15.9777 0.225098ZM20.9105 15.7282C20.9105 18.4483 18.6978 20.661 15.9777 20.661H7.5215C4.8014 20.661 2.5887 18.4483 2.5887 15.7282V7.27202C2.5887 4.55192 4.8014 2.33912 7.5215 2.33912H15.9777C18.6978 2.33912 20.9105 4.55192 20.9105 7.27202V15.7282Z"
+                            fill="<%= site_colors.primary %>"
+                          />
+                          <path
+                            d="M11.7498 5.86255C8.6365 5.86255 6.1123 8.38675 6.1123 11.5C6.1123 14.6133 8.6365 17.1375 11.7498 17.1375C14.8631 17.1375 17.3873 14.6133 17.3873 11.5C17.3873 8.38675 14.8631 5.86255 11.7498 5.86255ZM11.7498 15.0234C9.8077 15.0234 8.2264 13.4421 8.2264 11.5C8.2264 9.55655 9.8077 7.97665 11.7498 7.97665C13.6919 7.97665 15.2732 9.55655 15.2732 11.5C15.2732 13.4421 13.6919 15.0234 11.7498 15.0234Z"
+                            fill="<%= site_colors.primary %>"
+                          />
+                          <path
+                            d="M17.8098 6.19112C18.2247 6.19112 18.561 5.85472 18.561 5.43992C18.561 5.02502 18.2247 4.68872 17.8098 4.68872C17.3949 4.68872 17.0586 5.02502 17.0586 5.43992C17.0586 5.85472 17.3949 6.19112 17.8098 6.19112Z"
+                            fill="<%= site_colors.primary %>"
+                          />
+                        </g>
+                      </svg>
+
+                    </div>
+                  </a>
+                <% end %>
+
+                <% if social.whatsapp.present? %>
+                  <% whatsapp_link = "https://wa.me/#{social.whatsapp}" %>
+                  <a href="<%= whatsapp_link %>" target="_blank">
+                    <div class="border-2 border-[<%= site_colors.terciary %>] rounded-full w-[40px] h-[40px] flex items-center justify-center hover:scale-110 transition duration-300">
+                      <%#= image_tag "icons2/icon_whatsapp.svg" %>
+                      <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M22.9 4.04658C21.6776 2.81182 20.2216 1.83281 18.6169 1.16665C17.0121 0.500496 15.2908 0.16053 13.5533 0.166583C6.27333 0.166583 0.34 6.09992 0.34 13.3799C0.34 15.7132 0.953334 17.9799 2.1 19.9799L0.233334 26.8333L7.23333 24.9933C9.16667 26.0466 11.34 26.6066 13.5533 26.6066C20.8333 26.6066 26.7667 20.6733 26.7667 13.3932C26.7667 9.85992 25.3933 6.53992 22.9 4.04658ZM13.5533 24.3666C11.58 24.3666 9.64667 23.8333 7.95333 22.8333L7.55333 22.5932L3.39333 23.6866L4.5 19.6333L4.23333 19.2199C3.137 17.4692 2.55485 15.4456 2.55333 13.3799C2.55333 7.32658 7.48667 2.39325 13.54 2.39325C16.4733 2.39325 19.2333 3.53992 21.3 5.61992C22.3233 6.63853 23.1343 7.85013 23.6859 9.18448C24.2375 10.5188 24.5187 11.9494 24.5133 13.3932C24.54 19.4466 19.6067 24.3666 13.5533 24.3666ZM19.58 16.1532C19.2467 15.9932 17.62 15.1933 17.3267 15.0733C17.02 14.9666 16.8067 14.9133 16.58 15.2333C16.3533 15.5666 15.7267 16.3133 15.54 16.5266C15.3533 16.7533 15.1533 16.7799 14.82 16.6066C14.4867 16.4466 13.42 16.0866 12.1667 14.9666C11.18 14.0866 10.5267 13.0066 10.3267 12.6732C10.14 12.3399 10.3 12.1666 10.4733 11.9932C10.62 11.8466 10.8067 11.6066 10.9667 11.4199C11.1267 11.2332 11.1933 11.0866 11.3 10.8732C11.4067 10.6466 11.3533 10.4599 11.2733 10.2999C11.1933 10.1399 10.5267 8.51325 10.26 7.84658C9.99333 7.20658 9.71333 7.28658 9.51333 7.27325H8.87333C8.64667 7.27325 8.3 7.35325 7.99333 7.68658C7.7 8.01992 6.84667 8.81992 6.84667 10.4466C6.84667 12.0733 8.03333 13.6466 8.19333 13.8599C8.35333 14.0866 10.5267 17.4199 13.8333 18.8466C14.62 19.1933 15.2333 19.3933 15.7133 19.5399C16.5 19.7933 17.22 19.7532 17.7933 19.6732C18.4333 19.5799 19.7533 18.8732 20.02 18.0999C20.3 17.3266 20.3 16.6733 20.2067 16.5266C20.1133 16.3799 19.9133 16.3132 19.58 16.1532Z"
+                          fill="<%= site_colors.primary %>"
+                        />
+                      </svg>
+
+                    </div>
+                  </a>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-8 bg-[<%= site_colors.sencondary %>] opacity-90">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      <span class="text-sm inter-regular text-black">
+        &copy;
+        <%= Time.now.year %>
+        TODOS DIREITOS RESERVADOS
+      </span>
+      <span class="flex text-sm inter-regular text-black items-center">
+        DESENVOLVIDO POR:
+        <a class="inline-block ml-2 " href="https://www.instagram.com/lari_seviilha/">
+          <p class="" style="color: #CE273A;">
+            LARISSA SEVILHA
+          </p>
+        </a>
+      </span>
+    </div>
+  </section>
+</footer>

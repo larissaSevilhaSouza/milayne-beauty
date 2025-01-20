@@ -1,0 +1,93 @@
+<section class="w-full py-8">
+  <div class="container mx-auto">
+    <div class="flex flex-col items-center gap-2 mt-4 w-full">
+      <div class="w-full flex justify-between text-[<%= site_colors.primary %>] border-b-[2px] pb-[8px] mb-8 uppercase">
+        <h2 class="text-md md:text-lg md:karla-bold uppercase">
+          <nav class="">
+            <ul class="flex gap-2 list-none">
+              <li>
+                <%= link_to "Início", root_path %>
+                /
+              </li>
+              <li>
+                <%= link_to "Álbuns", albums_path %>
+              </li>
+            </ul>
+          </nav>
+        </h2>
+      </div>
+      <div class="flex w-full flex-col max-w-screen-xl gap-8 mx-auto">
+        <div class="flex gap-4">
+          <div class="w-full">
+            <div class="flex flex-col gap-2 w-full pb-4" style="font-family: <%= FontPrimary.first.category_font.title %>;">
+              <% if @album.description.present? %>
+                <h1 class="w-full text-2xl font-bold text-center text-[<%= site_colors.primary %>]">
+                  <%= @album.title %>
+                </h1>
+              <% end %>
+              <h4 class="w-full text-md text-gray-700 text-center"><%= raw @album.description %></h4>
+              <span class="w-full text-gray-700 font-semibold text-center"><%= @album.date %></span>
+            </div>
+            <div data-controller="carousel-thumb" class="swiper py-8 ">
+              <div class=" swiper-wrapper" data-controller="lightbox">
+                <% @album.photos.order("created_at asc").each do |photo| %>
+                  <%= link_to(photo.image.url, class:"swiper-slide ") do %>
+                    <%= image_tag photo.image.thumb.url, class: "object-cover rounded" %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-pagination"></div>
+              <div class="swiper-thumbs">
+                <div class="swiper-wrapper">
+                  <% @album.photos.order("created_at asc").each do |photo| %>
+                    <div class="relative overflow-hidden rounded h-full overflow-y-hidden swiper-slide group">
+                      <%= image_tag photo.image.thumb_slide.url, class: "w-full object-cover h-full group-hover:scale-105 transition-all ease-in-out duration-300" %>
+                      <div class="absolute h-full group-hover:opacity-0 z-10 bottom-0 left-0 p-2 md:p-4 bg-gradient-to-t from-[<%= site_colors.primary %>] rounded w-full transition-all ease-in-out duration-300 block">
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+  .swiper-slide-thumb-active .block {
+    opacity: .2;
+  }
+  .lg-backdrop {
+    background-color: #0000009e;
+  }
+  .lg-slide .lg-content .lg-next  {
+    background-image: url("<%= asset_path('icons/icon-next.png') %>");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    }
+    .lg-slide .lg-content .lg-prev  {
+    background-image: url("<%= asset_path('icons/icon-prev.png') %>");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    }
+  .lg-slide .lg-download {
+    background-image: url("<%= asset_path('icons/icon-download.png') %>");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .lg-slide .lg-close {
+    background-image: url("<%= asset_path('icons/icon-close1.png') %>");
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+</style>

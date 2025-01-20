@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+
+DCE="exec"
+DCR="run"
+# -----------------------------------------------------------------------------
+# Helper functions start with _ and aren't listed in this script's help menu.
+# -----------------------------------------------------------------------------
+
+function setup {
+  if ! docker network inspect nginx-network >/dev/null 2>&1; then
+  docker network create nginx-network
+  fi
+  docker compose build
+  docker compose run app yarn
+  docker compose up
+}
+
+function _dce {
+  docker compose "${DCE}" "${@}"
+}
+
+function _dcr {
+  docker compose "${DCR}" --rm "${@}"
+}
+
+# -----------------------------------------------------------------------
+# Run docker compose
+function up {
+  docker compose up
+}
+
+# Run docker compose in detached mode
+function upd {
+  docker compose up -d
+}
+
+# Stops containers and removes containers, networks, volumes, and images created by up
+function down {
+  docker compose down
+}
+
+# Clean all dangling image, container, network and build cache
+function prune {
+  docker image prune -f
+  docker container prune -f
+}
+
+function prune:all {
+  docker system prune --all -f
+}
+
+# Execute in rails container
+function cmd {
+  # Run any command you want in the app container
+  _dcr app "${@}"
+}
+
+function cmd:exec {
+  # Run any command you want in the app container
+  _dce app "${@}"
+}
+
+function rails {
+  # Run any Rails commands
+  cmd:exec rails "${@}"
+}
+
+function rake {
+  # Run any Rails commands
+  cmd:exec rake "${@}"
+}
+
+function rake:run {
+  # Run any Rails commands
+  cmd rake "${@}"
+}
+
+# Mina
+function mina {
+  # Run any Rails commands
+  cmd mina "${@}"
+}
+
+function mina:exec {
+  # Run any Rails commands
+  cmd:exec mina "${@}"
+}
+
+
+# Clean
+function clean {
+  # Remove cache and other machine generates files
+  rm -rf app/assets/builds/* public/assets tmp/* .byebug_history
+}
+
+
+# -----------------------------------------------------------------------
+function help {
+  printf "%s <task> [args]\n\nTasks:\n" "${0}"
+
+  compgen -A function | grep -v "^_" | cat -n
+
+  printf "\nExtended help:\n  Each task has comments for general usage\n"
+}
+
+# This idea is heavily inspired by: https://github.com/adriancooney/Taskfile
+TIMEFORMAT=$'\nTask completed in %3lR'
+time "${@:-help}"

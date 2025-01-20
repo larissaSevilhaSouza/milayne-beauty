@@ -1,0 +1,18 @@
+<section class="w-full h-full relative" data-controller="scroll-active" data-scroll-active-target="section">
+  <div class="container mx-auto py-8">
+    <%= render "hero/hero", titleHero: @secretary.nome %>
+  </div>
+</section>
+<% if @secretary.present? %>
+  <section class="w-full" data-controller="scroll-active" data-scroll-active-target="section">
+    <div class="container mx-auto py-8 relative flex flex-col md:flex-row gap-8">
+      <div class="md:w-4/6">
+        <%= render "secretary" %>
+      </div>
+      <div class="md:w-2/6 flex flex-col gap-4">
+        <%= render "quick_access/block" %>
+        <%#= render "videos/notice" %>
+      </div>
+    </div>
+  </section>
+<% end %>

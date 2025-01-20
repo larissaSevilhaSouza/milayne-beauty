@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID do Usuário</th>
+      <th>Nome do Usuário</th>
+      <th>Tipo Auditável</th>
+      <th>Ação</th>
+      <th>Mudanças Auditadas</th>
+      <th>Criado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @history.each do |audit| %>
+      <tr>
+        <td><%= audit[I18n.t("audit.user_id")] %></td>
+        <td><%= audit[I18n.t("audit.user_name")] %></td>
+        <td><%= audit[I18n.t("audit.auditable_type")] %></td>
+        <td><%= audit[I18n.t("audit.action")] %></td>
+        <td><%= audit[I18n.t("audit.audited_changes")] %></td>
+        <td><%= audit[I18n.t("audit.created_at")] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
